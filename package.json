@@ -1,0 +1,19 @@
+{
+  "name": "social-network-api",
+  "version": "1.0.0",
+  "description": "A social media like app",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Akemp24/social-network-api.git"
+  },
+  "author": "Asia Kemp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Akemp24/social-network-api/issues"
+  },
+  "homepage": "https://github.com/Akemp24/social-network-api#readme"
+}
