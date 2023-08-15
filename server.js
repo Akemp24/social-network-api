@@ -1,4 +1,6 @@
 // require needed packages
+const express = require('express');
+const { MongoClient } = require('mongodb');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
