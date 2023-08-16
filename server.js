@@ -1,6 +1,8 @@
 // require needed packages
 const express = require('express');
 const { MongoClient } = require('mongodb');
+// Require model
+const { Item } = require('./models');
 
 const app = express();
 const port = 3001;
