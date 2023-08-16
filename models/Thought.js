@@ -45,7 +45,13 @@ const thought = new mongoose.Schema({
     },
     reactions: [reaction]
   });
+
 // have code for other peoples reactions?
+// reaction count
+thought.virtual('reactionCount').get(function() {
+    return this.reactions.length;
+});
+
 // export code
 const Thought = mongoose.model('Thought', thought);
 module.exports = Thought;
