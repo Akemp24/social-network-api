@@ -30,4 +30,11 @@ const user = new mongoose.Schema({
 });
 
 // have code for attaching friends to user?
+// friendcount
+user.virtual('friendCount').get(function() {
+    return this.friends.length;
+});
+
 // Export code
+const User = mongoose.model('User', user);
+module.exports = User;
