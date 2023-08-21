@@ -1,8 +1,8 @@
 const router = require('express').Router();
 
 // Import user and thought controller functions
-const userController = require('../controllers/user-controller');
-const thoughtController = require('../controllers/thought-controller');
+const userController = require('../controller/user-controller');
+const thoughtController = require('../controller/thought-controller');
 
 // Define user routes
 router.route('/users')

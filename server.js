@@ -3,6 +3,8 @@ const express = require('express');
 const { MongoClient } = require('mongodb');
 // Require model
 const { User, Thought } = require('./models');
+const apiRoutes = require('./routes/api');
+
 
 const app = express();
 const port = 3001;
@@ -13,7 +15,7 @@ const client = new MongoClient(connectionStringURI);
 
 let db;
 
-const dbName = ' ';
+const dbName = 'social-network';
 // Middleware configs
 
 // MongoDB connections
@@ -23,6 +25,9 @@ client.connect()
 
     db = client.db(dbName);
 
+    // api routes
+    app.use('/api', apiRoutes);
+
     // start up express server
     app.listen(port, () => {
       console.log(`Example app listening at http://localhost:${port}`);
@@ -31,5 +36,3 @@ client.connect()
   .catch((err) => {
     console.error('Mongo connection error: ', err.message);
   });
-  
-// api routes
