@@ -24,6 +24,62 @@ router.post('/', async (req, res) => {
   }
 });
 
-// ... Define other user routes ...
+// Get single user by ID
+router.get('/:userId', async (req,res) => {
+    try {
+        const user = await User.findById(req.params.userId);
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ error: 'An error occured while fetching the user'});
+    }
+});
 
+// update user
+router.put('/:userId', async (req,res) => {
+    try {
+        const updatedUser = await User.findByIdAndUpdate(req.params.userId, req.body, { new: true});
+    } catch (error) {
+        res.status(400).json({ error: 'Failed to update the user'});
+    }
+});
+
+// delete user
+router.delete('/:userId', async (req, res) => {
+    try {
+      await User.findByIdAndDelete(req.params.userId);
+      res.json({ message: 'User deleted successfully.' });
+    } catch (error) {
+      res.status(400).json({ error: 'Failed to delete the user.' });
+    }
+  });
+
+// add friend to user
+router.post('/:userId/friends/:friendId', async (req, res) => {
+  try {
+    const user = await User.findByIdAndUpdate(
+      req.params.userId,
+      { $push: { friends: req.params.friendId } },
+      { new: true }
+    );
+    res.json(user);
+  } catch (error) {
+    res.status(400).json({ error: 'Failed to add friend to user.' });
+  }
+});
+
+// remove friend from user
+router.delete('/:userId/friends/:friendId', async (req, res) => {
+    try {
+      const user = await User.findByIdAndUpdate(
+        req.params.userId,
+        { $pull: { friends: req.params.friendId } },
+        { new: true }
+      );
+      res.json(user);
+    } catch (error) {
+      res.status(400).json({ error: 'Failed to remove friend from user.' });
+    }
+  });
+
+//   export
 module.exports = router;

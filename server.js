@@ -6,6 +6,7 @@ const { User, Thought } = require('./models');
 const apiRoutes = require('./routes/api');
 
 
+
 const app = express();
 const port = 3001;
 
